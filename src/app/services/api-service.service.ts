@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,11 +21,15 @@ export class ApiServiceService {
   displayPopularCurrenciesValue: any = [];
   fromCurrency!: string;
   ToCurrency!: string;
+  detailsBase!: any;
   amountEntered!: number;
   convertResult!: number;
   result!: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {
+    console.log();
+
+  }
 
   getAllCurrencies(): Observable<any> {
     return this.http.get(`${this.baseURL}symbols?${this.apiKey}`);

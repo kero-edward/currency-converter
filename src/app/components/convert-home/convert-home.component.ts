@@ -19,15 +19,6 @@ export class ConvertHomeComponent {
     // this.getCurrencies();
   }
 
-  ngDoCheck() {
-    if (this.api.amount == undefined) {
-      this.api.validAmount = false;
-    }
-    else {
-      this.api.validAmount = true;
-    }
-  }
-
   swap(selected1: any, selected2: any) {
     this.api.selected1 = selected2;
     this.api.selected2 = selected1;
@@ -63,11 +54,6 @@ export class ConvertHomeComponent {
     this.api.getMostPopularCurrencies(this.api.selected1).subscribe({
       next: (res) => {
         this.api.displayPopularCurrencies = res.rates;
-        this.api.displayPopularCurrenciesSymbol = Object.keys(res.rates);
-        this.api.displayPopularCurrenciesValue = Object.values(res.rates);
-        // console.log(this.api.displayPopularCurrenciesSymbol);
-        // console.log(this.api.displayPopularCurrenciesValue);
-        
       }
     });
   }

@@ -1,3 +1,40 @@
 main {
-    padding-top: 90px;
+  padding-top: 90px;
+  text-align: center;
+  margin: auto;
+
+  .example-container mat-form-field+mat-form-field {
+    margin-left: 8px;
+  }
+
+  .example-right-align {
+    text-align: right;
+  }
+
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  .col-md-12 {
+    background-color: #ffe4c4;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+
+    button {
+      margin: 0 !important;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
 }

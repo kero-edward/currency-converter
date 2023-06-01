@@ -24,7 +24,7 @@ main {
         display: inline-flex;
     }
 
-    .col-md-5 {
+    .col-md-12 {
         background-color: #ffe4c4;
         color: #000;
         display: flex;
@@ -58,6 +58,10 @@ main {
             box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.4);
             -webkit-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.4);
             -moz-box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.4);
+        
+            h2 {
+                font-size: 1rem;
+            }
         }
     }
 }

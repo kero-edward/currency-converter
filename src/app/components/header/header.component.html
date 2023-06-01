@@ -9,14 +9,14 @@
             </a>
 
             <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" *ngIf="api.hideDetailsBtn == false"
                 data-mdb-target="#navbarRightAlignExample" aria-controls="navbarRightAlignExample" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
 
             <!-- Collapsible wrapper -->
-            <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+            <div class="collapse navbar-collapse" id="navbarRightAlignExample" *ngIf="api.hideDetailsBtn == false">
                 <!-- Left links -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                     <button type="button" class="btn" (click)="eurToUsd()">

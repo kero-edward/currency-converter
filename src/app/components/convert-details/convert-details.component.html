@@ -1,9 +1,53 @@
 <main class="container">
-    <section class="d-flex justify-content-between">
-        <div>
-            <h3>name</h3>
-        </div>
-        <button type="button" class="btn btn-primary" routerLink="/">back to home</button>
-    </section>
+  <section class="d-flex justify-content-between mb-5">
+    <div>
+      <h1>{{api.selected1}} - {{api.selectedFullName}}</h1>
+    </div>
+    <button type="button" class="btn btn-primary" routerLink="/">back to home</button>
+  </section>
 
+  <!-- convert panel -->
+  <section>
+    <mat-form-field floatLabel="always" class="me-5">
+      <mat-label>Amount</mat-label>
+      <input matInput type="number" placeholder="0" [(ngModel)]="api.amount">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>From</mat-label>
+      <mat-select [(value)]="api.selected1" [disabled]="api.hideDetailsBtn">
+        <mat-option *ngFor="let currency of api.allCurrencies" [value]="currency">{{currency}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button type="button" class="btn btn-primary mx-4" [disabled]="api.hideDetailsBtn">
+      <i class="fa-solid fa-right-left"></i>
+    </button>
+
+    <mat-form-field>
+      <mat-label>To</mat-label>
+      <mat-select [(value)]="api.selected2">
+        <mat-option *ngFor="let currency of api.allCurrencies" [value]="currency">{{currency}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+
+  <!-- display result panel -->
+  <section>
+    <button type="button" class="btn btn-primary mb-5" [disabled]="!api.validAmount"
+      (click)="convertCurrencies()">convert</button>
+
+    <div class="row d-flex justify-content-center" *ngIf="api.convertResult">
+      <div class="col-md-12 convert flex-column">
+        <h1>
+          1&nbsp;{{api.fromCurrency}} =
+          {{api.result}}&nbsp;{{api.toCurrency}}
+        </h1>
+        <h1>
+          {{api.amountEntered}}&nbsp;{{api.fromCurrency}} =
+          {{api.convertResult}}&nbsp;{{api.toCurrency}}
+        </h1>
+      </div>
+    </div>
+  </section>
 </main>

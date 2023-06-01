@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { ApiServiceService } from 'src/app/services/api-service.service';
+import {
+  Component
+} from '@angular/core';
+import {
+  ApiServiceService
+} from 'src/app/services/api-service.service';
 
 @Component({
   selector: 'app-convert-details',
@@ -9,26 +13,23 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 export class ConvertDetailsComponent {
 
   constructor(public api: ApiServiceService) {
-    console.log('fromCurrency', this.api.fromCurrency);
-    console.log('ToCurrency', this.api.ToCurrency);
-    console.log('amountEntered', this.api.amountEntered);
-    console.log('result', this.api.result);
-    console.log('convertResult', this.api.convertResult);
+    this.api.hideDetailsBtn = true;
+  }
 
-    console.log('selected1', this.api.selected1);
-    console.log('selected2', this.api.selected2);
-
-    // this.getCurrencies();
+  ngOnInit(): void {
+    this.getCurrencies();
   }
 
   getCurrencies() {
     this.api.getAllCurrencies().subscribe({
       next: (res) => {
-        this.api.allCurrencies = res.symbols;
-        // this.api.detailsBase = Object.values(this.api.allCurrencies).find((key: any) => this.api.allCurrencies[key] == this.api.selected1);
-        // retrun Object.keys(obj).find(key => obj[key] === value);
-        console.log(this.getObjectValue(this.api.allCurrencies, this.api.selected1));
-        console.log('work...');
+        this.api.allCurrencies = Object.keys(res.symbols);
+        Object.entries(res.symbols).forEach(([key, value]) => {
+          if (key == this.api.selected1) {
+            console.log(`${key}: ${value}`);
+            this.api.selectedFullName = value;
+          }
+        });
       }
     });
   }
@@ -37,4 +38,22 @@ export class ConvertDetailsComponent {
     return Object.values(obj).find((value: any) => obj[value] === key);
   }
 
+  convertCurrencies() {
+    // GET converted result with amount entered
+    this.api.convertCurrency(this.api.selected2, this.api.selected1, this.api.amount).subscribe({
+      next: (res) => {
+        this.api.fromCurrency = res.query.from;
+        this.api.toCurrency = res.query.to;
+        this.api.amountEntered = res.query.amount;
+        this.api.convertResult = res.result;
+      }
+    });
+
+    // GET converted result with amount = 1
+    this.api.convertOneToOne(this.api.selected2, this.api.selected1, 1).subscribe({
+      next: (res) => {
+        this.api.result = res.result;
+      }
+    });
+  }
 }

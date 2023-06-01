@@ -12,10 +12,8 @@ export class HeaderComponent {
   constructor(public api: ApiServiceService, private router: Router) { }
 
   eurToUsd() {
-    this.api.selected1 = 'EUR';
-    this.api.selected2 = 'USD';
-    console.log('this.selected1', this.api.selected1);
-    console.log('this.selected2', this.api.selected2);
+    this.api.fromCurrency = 'EUR';
+    this.api.toCurrency = 'USD';
 
     if (window.location.pathname != '/details') {
       this.router.navigate(['/details']);
@@ -23,10 +21,8 @@ export class HeaderComponent {
   }
 
   eurToGbp() {
-    this.api.selected1 = 'EUR';
-    this.api.selected2 = 'GBP';
-    console.log('this.selected1', this.api.selected1);
-    console.log('this.selected2', this.api.selected2);
+    this.api.fromCurrency = 'EUR';
+    this.api.toCurrency = 'GBP';
 
     if (window.location.pathname != '/details') {
       this.router.navigate(['/details']);

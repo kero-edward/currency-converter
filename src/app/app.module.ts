@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { NgChartsModule } from 'ng2-charts';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
@@ -29,7 +30,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

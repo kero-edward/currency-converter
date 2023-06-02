@@ -23,7 +23,7 @@ export class ConvertHomeComponent {
   }
 
   ngOnInit(): void {
-    this.getCurrencies();
+    // this.getCurrencies();
   }
 
   ngDoCheck() {

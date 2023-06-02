@@ -50,4 +50,17 @@
       </div>
     </div>
   </section>
+
+  <!-- chart -->
+  <section class="py-5">
+    <div class="chart-wrapper">
+      <canvas baseChart
+              [type]="'line'"
+        [datasets]="chartData"
+        [labels]="chartLabels"
+        [options]="chartOptions"
+        >
+      </canvas>
+    </div>
+  </section>
 </main>

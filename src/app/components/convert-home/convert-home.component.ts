@@ -13,17 +13,12 @@ import {
 })
 export class ConvertHomeComponent {
 
-
-  // test: 'https://api.apilayer.com/fixer/latest?base=AED&apikey=ThznW0e8iKfBbvW5FCHOZ6ANK2EntH1L'
-  // for chart: 'https://api.apilayer.com/fixer/timeseries?start_date=2023-01-01&end_date=2023-05-30&base=USD&apikey=ThznW0e8iKfBbvW5FCHOZ6ANK2EntH1L'
-  // for convert currency from and to: 'https://api.apilayer.com/fixer/convert?to=EGP&from=EUR&amount=10&apikey=ThznW0e8iKfBbvW5FCHOZ6ANK2EntH1L'
-
   constructor(public api: ApiServiceService) {
     this.api.hideDetailsBtn = false;
   }
 
   ngOnInit(): void {
-    // this.getCurrencies();
+    this.getCurrencies();
   }
 
   ngDoCheck() {

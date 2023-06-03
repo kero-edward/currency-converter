@@ -14,6 +14,8 @@ export class HeaderComponent {
   eurToUsd() {
     this.api.fromCurrency = 'EUR';
     this.api.toCurrency = 'USD';
+    this.api.selected1 = 'EUR';
+    this.api.selected2 = 'USD';
 
     if (window.location.pathname != '/details') {
       this.router.navigate(['/details']);
@@ -23,6 +25,8 @@ export class HeaderComponent {
   eurToGbp() {
     this.api.fromCurrency = 'EUR';
     this.api.toCurrency = 'GBP';
+    this.api.selected1 = 'EUR';
+    this.api.selected2 = 'GBP';
 
     if (window.location.pathname != '/details') {
       this.router.navigate(['/details']);
